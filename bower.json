@@ -1,0 +1,26 @@
+{
+  "name": "angu-fixed-header-table",
+  "version": "1.0.0",
+  "authors": [
+    "Jason Watmore <jason@pointblankdevelopment.com.au> (http://jasonwatmore.com)"
+  ],
+  "description": "AngularJS fixed header scrollable table directive",
+  "main": "angu-fixed-header-scrollable-table.js",
+  "keywords": [
+    "AngularJS",
+    "Fixed Header Table"
+  ],
+  "license": "MIT",
+  "homepage": "http://pointblankdevelopment.com.au/blog/angularjs-fixed-header-scrollable-table-directive",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "jquery": "~2.1.1"
+  }
+}

@@ -1,4 +1,4 @@
 angu-fixed-header-table
 =======================
 
-AngularJS fixed header scrollable table directive
+An AngularJS fixed header scrollable table directive

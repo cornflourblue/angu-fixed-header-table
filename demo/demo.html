@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Fixed Header Scrollable Table</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <table class="table table-bordered" fixed-header>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+                <th>Header 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
+                <td>Row {{item}} Col 1</td>
+                <td>Row {{item}} Col 2</td>
+                <td>Row {{item}} Col 3</td>
+                <td>Row {{item}} Col 4</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+    <script src="../angu-fixed-header-table.js"></script>
+    <script src="demo.js"></script>
+</body>
+
+</html>
