@@ -8,6 +8,9 @@
     .directive('fixedHeader', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
+            scope: {
+                tableHeight: '@'
+            },
             link: function ($scope, $elem, $attrs, $ctrl) {
                 // wait for content to load into table
                 $scope.$watch(function () { return $elem.find("tbody").is(':visible'); },
@@ -35,7 +38,7 @@
 
                                 $elem.find('tbody').css({
                                     'display': 'block',
-                                    'height': '400px',
+                                    'height': $scope.tableHeight || '400px',
                                     'overflow': 'auto'
                                 });
 
