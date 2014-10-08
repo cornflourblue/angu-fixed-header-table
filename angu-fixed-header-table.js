@@ -17,7 +17,7 @@
                     function (newValue, oldValue) {
                         if (newValue === true) {
                             // reset display styles so column widths are correct when measured below
-                            $elem.find('thead, tbody').css('display', '');
+                            $elem.find('thead, tbody, tfoot').css('display', '');
 
                             // wrap in $timeout to give table a chance to finish rendering
                             $timeout(function () {
@@ -25,14 +25,16 @@
                                 $elem.find('th').each(function (i, thElem) {
                                     thElem = $(thElem);
                                     var tdElems = $elem.find('tbody tr:first td:nth-child(' + (i + 1) + ')');
+                                    var tfElems = $elem.find('tfoot tr:first td:nth-child(' + (i + 1) + ')');
 
                                     var columnWidth = tdElems.width();
                                     thElem.width(columnWidth);
                                     tdElems.width(columnWidth);
+                                    tfElems.width(columnWidth);
                                 });
 
                                 // set css styles on thead and tbody
-                                $elem.find('thead').css({
+                                $elem.find('thead, tfoot').css({
                                     'display': 'block',
                                 });
 
