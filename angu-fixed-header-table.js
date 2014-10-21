@@ -14,7 +14,7 @@
             link: function ($scope, $elem, $attrs, $ctrl) {
                 function isVisible(el) {
                     var style = window.getComputedStyle(el);
-                    return (style.display != 'none')
+                    return (style.display != 'none' && el.offsetWidth !=0 );
                 }
                 var elem = $elem[0];
                 // wait for content to load into table
