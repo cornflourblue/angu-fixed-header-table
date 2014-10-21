@@ -6,7 +6,7 @@
     "Jean Maynier<jamynier@kpler.com>"
   ],
   "description": "AngularJS fixed header scrollable table directive",
-  "main": "angu-fixed-header-scrollable-table.js",
+  "main": "angu-fixed-header-table.js",
   "keywords": [
     "AngularJS",
     "Fixed Header Table"
