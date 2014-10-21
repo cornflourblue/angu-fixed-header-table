@@ -27,7 +27,7 @@
                             // wrap in $timeout to give table a chance to finish rendering
                             $timeout(function () {
                                 // set widths of columns
-                                angular.forEach(elem.querySelectorAll('th'), function (thElem, i) {
+                                angular.forEach(elem.querySelectorAll('tr:first-child th'), function (thElem, i) {
 
                                     var tdElems = elem.querySelector('tbody tr:first-child td:nth-child(' + (i + 1) + ')');
                                     var tfElems = elem.querySelector('tfoot tr:first-child td:nth-child(' + (i + 1) + ')');
