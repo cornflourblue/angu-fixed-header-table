@@ -18,7 +18,7 @@
                 }
                 var elem = $elem[0];
                 // wait for content to load into table and to have at least one row, tdElems could be empty at the time of execution if td are created asynchronously (eg ng-repeat with promise)
-                $scope.$watch(function () { return isVisible(elem.querySelector("tbody")) && elem.querySelector('tbody tr:first-child') != null; },
+                var unbindWatch = $scope.$watch(function () { return isVisible(elem.querySelector("tbody")) && elem.querySelector('tbody tr:first-child') != null; },
                     function (newValue, oldValue) {
                         if (newValue === true) {
                             // reset display styles so column widths are correct when measured below
@@ -65,6 +65,9 @@
                                     });
                                 }
                             });
+
+                            //we only need to watch once
+                            unbindWatch();
                         }
                     });
             }
