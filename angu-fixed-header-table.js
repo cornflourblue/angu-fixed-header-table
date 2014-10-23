@@ -17,8 +17,8 @@
                     return (style.display != 'none' && el.offsetWidth !=0 );
                 }
                 var elem = $elem[0];
-                // wait for content to load into table
-                $scope.$watch(function () { return isVisible(elem.querySelector("tbody")); },
+                // wait for content to load into table and to have at least one row, tdElems could be empty at the time of execution if td are created asynchronously (eg ng-repeat with promise)
+                $scope.$watch(function () { return isVisible(elem.querySelector("tbody")) && elem.querySelector('tbody tr:first-child') != null; },
                     function (newValue, oldValue) {
                         if (newValue === true) {
                             // reset display styles so column widths are correct when measured below
@@ -32,8 +32,11 @@
                                     var tdElems = elem.querySelector('tbody tr:first-child td:nth-child(' + (i + 1) + ')');
                                     var tfElems = elem.querySelector('tfoot tr:first-child td:nth-child(' + (i + 1) + ')');
 
-                                    var columnWidth = tdElems.offsetWidth//tdElems.width();
-                                    tdElems.style.width = columnWidth + 'px';
+
+                                    var columnWidth = tdElems ? tdElems.offsetWidth : thElem.offsetWidth;
+                                    if(tdElems) {
+                                        tdElems.style.width = columnWidth + 'px';
+                                    }
                                     if(thElem) {
                                         thElem.style.width = columnWidth + 'px';
                                     }
