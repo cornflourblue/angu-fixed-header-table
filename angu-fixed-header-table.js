@@ -12,48 +12,67 @@
                 tableHeight: '@'
             },
             link: function ($scope, $elem, $attrs, $ctrl) {
-                // wait for content to load into table
-                $scope.$watch(function () { return $elem.find("tbody").is(':visible'); },
+                function isVisible(el) {
+                    var style = window.getComputedStyle(el);
+                    return (style.display != 'none' && el.offsetWidth !=0 );
+                }
+
+                function isTableReady() {
+                    return isVisible(elem.querySelector("tbody")) && elem.querySelector('tbody tr:first-child') != null;
+                }
+
+                var elem = $elem[0];
+                // wait for content to load into table and to have at least one row, tdElems could be empty at the time of execution if td are created asynchronously (eg ng-repeat with promise)
+                var unbindWatch = $scope.$watch(isTableReady,
                     function (newValue, oldValue) {
                         if (newValue === true) {
                             // reset display styles so column widths are correct when measured below
-                            $elem.find('thead, tbody, tfoot').css('display', '');
+                            angular.element(elem.querySelectorAll('thead, tbody, tfoot')).css('display', '')
 
                             // wrap in $timeout to give table a chance to finish rendering
                             $timeout(function () {
                                 // set widths of columns
-                                $elem.find('th').each(function (i, thElem) {
-                                    thElem = $(thElem);
-                                    var tdElems = $elem.find('tbody tr:first td:nth-child(' + (i + 1) + ')');
-                                    var tfElems = $elem.find('tfoot tr:first td:nth-child(' + (i + 1) + ')');
+                                angular.forEach(elem.querySelectorAll('tr:first-child th'), function (thElem, i) {
 
-                                    var columnWidth = tdElems.width();
-                                    thElem.width(columnWidth);
-                                    tdElems.width(columnWidth);
-                                    tfElems.width(columnWidth);
+                                    var tdElems = elem.querySelector('tbody tr:first-child td:nth-child(' + (i + 1) + ')');
+                                    var tfElems = elem.querySelector('tfoot tr:first-child td:nth-child(' + (i + 1) + ')');
+
+
+                                    var columnWidth = tdElems ? tdElems.offsetWidth : thElem.offsetWidth;
+                                    if(tdElems) {
+                                        tdElems.style.width = columnWidth + 'px';
+                                    }
+                                    if(thElem) {
+                                        thElem.style.width = columnWidth + 'px';
+                                    }
+                                    if (tfElems) {
+                                        tfElems.style.width = columnWidth + 'px';
+                                    }
                                 });
 
                                 // set css styles on thead and tbody
-                                $elem.find('thead, tfoot').css({
-                                    'display': 'block',
-                                });
+                                angular.element(elem.querySelectorAll('thead, tfoot')).css('display', 'block')
 
-                                $elem.find('tbody').css({
+                                angular.element(elem.querySelectorAll('tbody')).css({
                                     'display': 'block',
-                                    'height': $scope.tableHeight || '400px',
+                                    'height': $scope.tableHeight || 'inherit',
                                     'overflow': 'auto'
                                 });
 
+
                                 // reduce width of last column by width of scrollbar
-                                var scrollBarWidth = $elem.find('thead').width() - $elem.find('tbody')[0].clientWidth;
+                                var scrollBarWidth = elem.querySelector('thead').offsetWidth - elem.querySelector('tbody').clientWidth;
                                 if (scrollBarWidth > 0) {
                                     // for some reason trimming the width by 2px lines everything up better
                                     scrollBarWidth -= 2;
-                                    $elem.find('tbody tr:first td:last-child').each(function (i, elem) {
-                                        $(elem).width($(elem).width() - scrollBarWidth);
+                                    angular.forEach(elem.querySelectorAll('tbody tr:first-child td:last-child'), function (el, i) {
+                                        el.style.width = (el.offsetWidth - scrollBarWidth) + 'px';
                                     });
                                 }
                             });
+
+                            //we only need to watch once
+                            unbindWatch();
                         }
                     });
             }
