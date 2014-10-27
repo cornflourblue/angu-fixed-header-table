@@ -61,13 +61,13 @@
 
 
                                 // reduce width of last column by width of scrollbar
-                                var scrollBarWidth = elem.querySelector('thead').offsetWidth - elem.querySelector('tbody').clientWidth;
+                                var tbody = elem.querySelector('tbody');
+                                var scrollBarWidth = tbody.offsetWidth - tbody.clientWidth;
                                 if (scrollBarWidth > 0) {
                                     // for some reason trimming the width by 2px lines everything up better
                                     scrollBarWidth -= 2;
-                                    angular.forEach(elem.querySelectorAll('tbody tr:first-child td:last-child'), function (el, i) {
-                                        el.style.width = (el.offsetWidth - scrollBarWidth) + 'px';
-                                    });
+                                    var lastColumn = elem.querySelector('tbody tr:first-child td:last-child');
+                                    lastColumn.style.width = (lastColumn.offsetWidth - scrollBarWidth) + 'px';
                                 }
                             });
 
