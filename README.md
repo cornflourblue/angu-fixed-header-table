@@ -29,4 +29,4 @@ Simply add the *fixed-header* attribute to any tables you'd like to have a fixed
 </table>
 ```
 
-The default height of the table body is 400px, to change this add a *table-height* attribute to the table element eg: table-height="500px".
+The table height can be set using CSS on the table element or by adding a *table-height* attribute to the table element eg: table-height="500px".
