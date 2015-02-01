@@ -8,9 +8,6 @@
     .directive('fixedHeader', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
-            scope: {
-                tableHeight: '@'
-            },
             link: function ($scope, $elem, $attrs, $ctrl) {
                 function isVisible(el) {
                     var style = window.getComputedStyle(el);
@@ -55,7 +52,7 @@
 
                                 angular.element(elem.querySelectorAll('tbody')).css({
                                     'display': 'block',
-                                    'height': $scope.tableHeight || 'inherit',
+                                    'height': $attrs.tableHeight || 'inherit',
                                     'overflow': 'auto'
                                 });
 
