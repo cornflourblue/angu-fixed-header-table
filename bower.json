@@ -1,6 +1,6 @@
 {
   "name": "angu-fixed-header-table",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "authors": [
     "Jason Watmore <jason@pointblankdevelopment.com.au> (http://jasonwatmore.com)",
     "Jean Maynier<jamynier@kpler.com>"
@@ -21,6 +21,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.16"
+    "angular": ">=1.2.16"
   }
 }
