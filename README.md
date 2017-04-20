@@ -3,11 +3,11 @@ angu-fixed-header-table
 
 An AngularJS fixed header scrollable table directive
 
-###Demo
+### Demo
 
 To see a demo and further details go to http://pointblankdevelopment.com.au/blog/angularjs-fixed-header-scrollable-table-directive
 
-###Installation
+### Installation
 
 Install using bower: `bower install angu-fixed-header-table`
 
@@ -19,7 +19,7 @@ Add the 'anguFixedHeaderTable' directive as a dependency of your AngularJS appli
 angular.module('myApp', ['anguFixedHeaderTable']);
 ```
 
-###Usage
+### Usage
 
 Simply add the *fixed-header* attribute to any tables you'd like to have a fixed header:
 
