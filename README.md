@@ -9,9 +9,17 @@ To see a demo and further details go to http://pointblankdevelopment.com.au/blog
 
 ### Installation
 
-Install using bower: `bower install angu-fixed-header-table`
+#### NPM
+
+`npm install angu-fixed-header-table`
+
+#### Bower
+
+`bower install angu-fixed-header-table`
 
 Alternatively download the code and include the angu-fixed-header-table.js file in your page.
+
+### Integration with your AngularJS app
 
 Add the 'anguFixedHeaderTable' directive as a dependency of your AngularJS application:
 
