@@ -1,0 +1,22 @@
+{
+    "name": "angu-fixed-header-table",
+    "description": "AngularJS fixed header scrollable table directive",
+    "version": "1.2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cornflourblue/angu-fixed-header-table.git"
+    },
+    "license": "MIT",
+    "homepage": "https://pointblankdevelopment.com.au/blog/angularjs-fixed-header-scrollable-table-directive",
+    "author": {
+        "name": "Jason Watmore",
+        "url": "http://jasonwatmore.com"
+    },
+    "keywords": [
+        "AngularJS",
+        "Fixed Header Table"            
+    ],
+    "dependencies": {
+        "angular": "^1.2.16"
+    }
+}
